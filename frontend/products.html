@@ -37,13 +37,21 @@
       </div>
 <!--Sort-->
 <div class="col-md-12 d-flex justify-content-end">
-    <select class="form-select w-auto">
+    <select class="form-select w-auto" id="sortselect">
         <option selected>sort by..</option>
-        <option value="1">Price</option>
-        <option value="1">category</option>
-         <option value="1">color</option>
+        <option value="1">Price: low to high </option>
+        <option value="2">Price:high to low</option>
+        
     </select>
 </div>
+<!--filter-->
+    <div class="col-md-12 d-flex justify-content-end">
+    <select id="filterselect " class="form-select w-25 my-2"> //my-2 space above
+        <option value="all">All category</option>
+        <option value="color">color</option>
+        <option value="model">model</option>
+    </select>
+    </div>
 
     </div></div>
 
