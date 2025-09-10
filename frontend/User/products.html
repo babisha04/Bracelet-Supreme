@@ -31,13 +31,15 @@
     <div class="container my-4">
     <div class="row mb-3">
         <!--searchBox-->
-      <div class="col-md-12 d-flex justify-content-end">
-        <input type="text" id="searchBox" class="form-control w-25 me-2 my-2" placeholder="Search products..." >
+      <div class="col-md-4 ">
+<div class="input-group">
+        <input type="text" id="searchBox" class="form-control my-2" placeholder="Search products..." >
+        
         <button class="btn btn-primary my-2">Search</button>
-      </div>
+    </div></div>
 <!--Sort-->
-<div class="col-md-12 d-flex justify-content-end">
-    <select class="form-select w-auto" id="sortselect">
+<div class="col-md-4">
+    <select class="form-select my-2" id="sortselect">
         <option selected>sort by..</option>
         <option value="1">Price: low to high </option>
         <option value="2">Price:high to low</option>
@@ -45,8 +47,8 @@
     </select>
 </div>
 <!--filter-->
-    <div class="col-md-12 d-flex justify-content-end">
-    <select id="filterselect " class="form-select w-25 my-2"> //my-2 space above
+    <div class="col-md-4">
+    <select id="filterselect " class="form-select  my-2"> //my-2 space above
         <option value="all">All category</option>
         <option value="color">color</option>
         <option value="model">model</option>
@@ -64,7 +66,7 @@
 </div>
 <!-- Bootstrap & JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src=""></script>
+  <script src="/frontend/products.js"></script>
     
 </body>
 </html>
