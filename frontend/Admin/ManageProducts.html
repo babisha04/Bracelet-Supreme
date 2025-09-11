@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center my-4">Manage Products</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+        <tbody class="productTableBody">
+
+        </tbody>
+    </div>
+    <script>
+        const products=[{id:1, product_name:"gold bracelet" ,category:"gold ", price:"2000" , img:""}]
+        const productTableBody=document.getElementById("productTableBody")
+
+        function loadproducts(){
+            productTableBody.innerHTML="";
+            produts.forEach(p => {
+                productTableBody.innerHTML+=
+                `
+                <tr>
+                    <td>${p.id}</td>
+                       <td>${p.product_name}</td>
+                       <td>${p.category}</td>
+                       <td>${p.price}</td>
+                       <td>${p.img}</td>
+                       <td>
+                        <button class="btn btn-warning" onclick="editprodct(${p.id})">Edit</button>
+                        <button class="btn btn-warning" onclick="deleteprodct(${p.id})">Delete</button>
+                        </td>
+                        </tr>
+                    `
+                
+            });
+        }
+        function editProduct(id) {
+      alert("Edit Product ID: " + id);
+      // TODO: Open form to edit product
+    }
+
+    function deleteProduct(id) {
+      alert("Delete Product ID: " + id);
+      // TODO: Call backend API to delete product
+    }
+
+    // Load products on page load
+    loadProducts();
+    </script>
+</body>
+</html>
