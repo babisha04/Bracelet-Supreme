@@ -20,18 +20,22 @@
                     <th>Action</th>
                 </tr>
             </thead>
-        </table>
-        <tbody class="productTableBody">
+        
+        <tbody id="productTableBody">
 
         </tbody>
+        </table>
     </div>
     <script>
-        const products=[{id:1, product_name:"gold bracelet" ,category:"gold ", price:"2000" , img:""}]
-        const productTableBody=document.getElementById("productTableBody")
+        const products=[
+            {id:1, product_name:"gold bracelet" ,category:"gold ", price:"2000" , img:"/im"},
+            {id:2, product_name:"gold bracelet" ,category:"gold ", price:"2000" , img:""},
+        ];
+        const productTableBody=document.getElementById("productTableBody");
 
         function loadproducts(){
             productTableBody.innerHTML="";
-            produts.forEach(p => {
+            products.forEach(p => {
                 productTableBody.innerHTML+=
                 `
                 <tr>
@@ -41,11 +45,11 @@
                        <td>${p.price}</td>
                        <td>${p.img}</td>
                        <td>
-                        <button class="btn btn-warning" onclick="editprodct(${p.id})">Edit</button>
-                        <button class="btn btn-warning" onclick="deleteprodct(${p.id})">Delete</button>
+                        <button class="btn btn-warning" onclick="editProduct(${p.id})">Edit</button>
+                        <button class="btn btn-warning" onclick="deleteProduct(${p.id})">Delete</button>
                         </td>
                         </tr>
-                    `
+                    `;
                 
             });
         }
@@ -60,7 +64,7 @@
     }
 
     // Load products on page load
-    loadProducts();
+    loadproducts();
     </script>
 </body>
 </html>
