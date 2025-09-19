@@ -3,6 +3,7 @@
     name:"polar", price:"150", category:"pearl"
    }
 ]*/
+ function loadProducts() {
 fetch("http://localhost:8080/api/products")
   .then(response => response.json())
   .then(data => {
@@ -19,3 +20,5 @@ fetch("http://localhost:8080/api/products")
     });
   })
   .catch(err => console.error("Error:", err));
+}
+loadProducts();

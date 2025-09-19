@@ -22,14 +22,18 @@
             </div>
 
             <div class="mb-3">
-<label class="form-label" for="productprice">Price</label>
-                <input class="form-control" type="nuber" id="productprice" placeholder="Enter the Price" required>
+<label class="form-label" for="productPrice">Price</label>
+                <input class="form-control" type="number" id="productPrice" placeholder="Enter the Price" required>
+            </div>
+             <div class="mb-3">
+<label class="form-label" for="productQuant">Quantity</label>
+                <input class="form-control" type="number" id="productQuant" placeholder="Enter the Quantity" required>
             </div>
 
-            <div class="mb-3">
+           <!-- <div class="mb-3">
                 <label class="form-label" for="image">Image</label>
                 <input class="form-control" type="url" id="image" placeholder="Enter the image" required>
-            </div>
+            </div> -->
 
             <button class="btn btn-success" type="submit">Add Product</button>
             <a href="/frontend/Admin/ManageProducts.html" class="btn btn-secondary">Back to Manage</a>
@@ -37,20 +41,44 @@
         </form>
     </div> 
     <script>
-        const form=document.getElementById("productform");
-        form.addEventListener("submit", function(event){
-            event.preventDefault();
-            const products={
-                name: document.getElementById("productName"),
-                category:document.getElementById("productCategory"),
-                price:document.getElementById("productPrice"),
-                img:document.getElementById("image")
+       
+  const form = document.getElementById("productform");
 
-            };
-            console.log("Added Product"+products);
-            alert("Product Added Successfully!");
-            form.reset();
-        });
-    </script>
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const product = {
+      name: document.getElementById("productName").value,
+      category: document.getElementById("productCategory").value,
+      price: document.getElementById("productPrice").value,
+        stock: document.getElementById("productQuant").value,
+      //img: document.getElementById("image").value
+    };
+
+    // Send product to backend
+    fetch("http://localhost:8080/api/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(product)
+    })
+      .then(response => {
+        if (!response.ok) throw new Error("Failed to add product");
+        return response.json();
+      })
+      .then(data => {
+        console.log("Product added:", data);
+        alert("✅ Product added successfully!");
+        form.reset();
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("❌ Error adding product!");
+      });
+  });
+</script>
+
+   
 </body>
 </html>
