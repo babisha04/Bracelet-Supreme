@@ -27,44 +27,22 @@
         </table>
     </div>
     <script>
-        const products=[
-            {id:1, product_name:"gold bracelet" ,category:"gold ", price:"2000" , img:"/im"},
-            {id:2, product_name:"gold bracelet" ,category:"gold ", price:"2000" , img:""},
-        ];
-        const productTableBody=document.getElementById("productTableBody");
-
-        function loadproducts(){
-            productTableBody.innerHTML="";
-            products.forEach(p => {
-                productTableBody.innerHTML+=
-                `
-                <tr>
-                    <td>${p.id}</td>
-                       <td>${p.product_name}</td>
-                       <td>${p.category}</td>
-                       <td>${p.price}</td>
-                       <td>${p.img}</td>
-                       <td>
-                        <button class="btn btn-warning" onclick="editProduct(${p.id})">Edit</button>
-                        <button class="btn btn-warning" onclick="deleteProduct(${p.id})">Delete</button>
-                        </td>
-                        </tr>
-                    `;
-                
-            });
-        }
-        function editProduct(id) {
-      alert("Edit Product ID: " + id);
-      // TODO: Open form to edit product
-    }
-
-    function deleteProduct(id) {
-      alert("Delete Product ID: " + id);
-      // TODO: Call backend API to delete product
-    }
-
-    // Load products on page load
-    loadproducts();
-    </script>
+fetch("http://localhost:8080/api/products")
+  .then(res => res.json())
+  .then(products => {
+    const tableBody = document.getElementById("productTableBody");
+    tableBody.innerHTML = "";
+    products.forEach(p => {
+      tableBody.innerHTML += `
+        <tr>
+          <td>${p.id}</td>
+          <td>${p.name}</td>
+          <td>${p.category}</td> <!-- 👈 category shown -->
+          <td>${p.price}</td>
+          <td><img src="${p.img}" width="60"></td>
+        </tr>`;
+    });
+  });
+</script>
 </body>
 </html>
